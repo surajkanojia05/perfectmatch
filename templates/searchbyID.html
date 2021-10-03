@@ -1,0 +1,156 @@
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Search by I'd</title>
+    <style>
+      body{
+        background-color:#f9f5d6;
+      }
+
+    </style>
+</head>
+<body >
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #dd0408!important; ">
+  <div class="container-fluid">
+    <strong><a class="navbar-brand" href="/"><img style="max-width:50px;" src="/static/images/logo1.jfif">  </a></strong>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" style="color:black; font-weight: bold;"  aria-current="page" href="/partner">Partner Search</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color:black; font-weight: bold;" aria-current="page" href="/search_id">Search by ID</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color:black; font-weight: bold;" aria-current="page" href="/payment">Payment Options</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" style="color:black; font-weight: bold;" aria-current="page" href="/membership">Membership Plans</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  <center>
+  <div class="container-fluid mt-4">
+    <form class="d-flex" method="POST" action="{% url 'search_id' %}">
+    {% csrf_token %}
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchfor">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
+  </center>
+<center>
+  <div class="container" style="">
+    {% if searchfor %}
+    <h3>You have searched for: {{ searchfor }}</h3>
+    <br />
+    {% if partners|length < 1 %} <h5>No search results </h5>
+      </br>
+      <h6>- try different keywords </h6>
+      </br>
+      {% endif %}
+      {% for i in partners %}
+      <div class="xl:w-1/2 md:w-1/2 p-2">
+        <div class="border border-gray-200 p-6 rounded-lg" style="background-color:sandybrown;">
+          <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img src={{ i.image1.url }} class="d-block h-50 w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src={{ i.image2.url }} class="d-block h-50 w-100" alt="...">
+              </div>
+              <div class="carousel-item">
+                <img src={{ i.image3.url }} class="d-block h-50 w-100" alt="...">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
+          <hr>
+          <center>
+            <h2 class="text-lg text-gray-900 title-font ">Name: {{i.name}}</h2>
+            <h4 class="text-lg text-gray-900 title-font ">Age: {{i.age}}</h4>
+            <h4 class="text-lg text-gray-900 title-font ">Gender: {{i.gender}}</h4>
+            <h4 class="text-lg text-gray-900 title-font ">Religion: {{i.religion}}</h4>
+            <h4 class="text-lg text-gray-900 title-font ">Cast: {{i.cast}}</h4>
+            <h4 class="text-lg text-gray-900 title-font ">Qualifications: {{i.qualifications}}</h4>
+            <h4 class="text-lg text-gray-900 title-font ">Occupation: {{i.occupation}}</h4>
+            <p style="color: black;">{{i.description}}
+            </p>
+            <h4 class="text-lg text-gray-900 title-font">Partner I'd: {{i.partner_id}}<h4>
+                <hr>
+                <button type="button" class="btn btn-dark" onclick="location.href='/membership'">Check-out!</button>
+          </center>
+        </div>
+      </div>
+      {% endfor %}
+
+      {% else %}
+      <h1 class="mb-2">
+        <br>Type Partner I'd in search bar, you want to search for!
+      </h1>
+      <img src="/static/images/logo1.jfif">
+      {% endif %}
+
+  </div>
+</center>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+
+<hr>
+<footer class="text-gray-600 body-font" style="background-color:#DD0408!important;">
+  <div class="container px-2 py-2 mx-auto flex items-center sm:flex-row flex-col">
+            <a class="nav-link" style="color:black; font-weight: bold;" href="/">PerfectMatch</a>
+            <a class="nav-link" style="color:black; font-weight: bold;" href="/about">About us</a> 
+            <a class="nav-link" style="color:black; font-weight: bold;" href="/contact">Contact us</a>
+    <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+      <a href="#" class="text-gray-500">
+        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+        </svg>
+      </a>
+      <a href="#" target="_blank" class="ml-3 text-gray-500">
+        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+        </svg>
+      </a>
+      <a href="#" target="_blank"class="ml-3 text-gray-500">
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+        </svg>
+      </a>
+    </span>
+  </div>
+</footer>
+
+</body>
+</html>

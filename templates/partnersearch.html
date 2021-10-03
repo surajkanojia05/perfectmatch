@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %}Partner Search{% endblock title %}
+
+{% block body %}
+<center>
+  <div class="container">
+    {% for i in partners %}
+    <div class="xl:w-1/2 md:w-1/2 p-2">
+      <div class="border border-gray-200 p-6 rounded-lg" style="background-color:sandybrown;">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+              aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+              aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+              aria-label="Slide 3"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src={{ i.image1.url }} class="d-block h-50 w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src={{ i.image2.url }} class="d-block h-50 w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src={{ i.image3.url }} class="d-block h-50 w-100" alt="...">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <hr>
+        <center>
+          <h2 class="text-lg text-gray-900 title-font ">Name: {{i.name}}</h2>
+          <h4 class="text-lg text-gray-900 title-font ">Age: {{i.age}}</h4>
+          <h4 class="text-lg text-gray-900 title-font ">Gender: {{i.gender}}</h4>
+          <h4 class="text-lg text-gray-900 title-font ">Religion: {{i.religion}}</h4>
+          <h4 class="text-lg text-gray-900 title-font ">Cast: {{i.cast}}</h4>
+          <h4 class="text-lg text-gray-900 title-font ">Qualifications: {{i.qualifications}}</h4>
+          <h4 class="text-lg text-gray-900 title-font ">Occupation: {{i.occupation}}</h4>
+          <p style="color: black;">{{i.description}}
+          </p>
+          <h4 class="text-lg text-gray-900 title-font">Partner I'd: {{i.partner_id}}<h4>
+              <hr>
+              <button type="button" class="btn btn-dark" onclick="location.href='/membership'">Check-out!</button>
+        </center>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="flex flex-col text-center w-full mb-12" style="text-decoration:none;">
+      <a href="" style="text-decoration: none;">
+        <button onclick="location.href='#top'"
+          class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
+          style="background-color:#BAB2B5;">Back to Top</button>
+      </a>
+    </div>
+</center>
+{% endblock body %}
