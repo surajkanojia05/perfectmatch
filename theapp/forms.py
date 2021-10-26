@@ -6,10 +6,13 @@ from django.forms import ModelForm
 class addprofileform(ModelForm):
     class Meta:
         model = partner
-        fields = ('name', 'cast', 'religion', 'age', 'description', 'tag', 'gender', 'qualifications', 'occupation', 'height', 'image1', 'image2', 'image3')
+        fields = ('name', 'father_name', 'mother_name', 'address', 'cast', 'religion', 'age', 'description', 'tag', 'gender', 'qualifications', 'occupation', 'height', 'image1', 'image2', 'image3')
 
         widgets = {
             'name':forms.TextInput(attrs={'class': 'form-control'}),
+            'father_name':forms.TextInput(attrs={'class': 'form-control'}),
+            'mother_name':forms.TextInput(attrs={'class': 'form-control'}),
+            'address':forms.TextInput(attrs={'class': 'form-control'}),
             'cast':forms.TextInput(attrs={'class': 'form-control'}),
             'religion':forms.TextInput(attrs={'class': 'form-control'}),
             'age':forms.NumberInput(attrs={'class': 'form-control'}),
