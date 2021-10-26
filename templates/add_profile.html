@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Add Profile{% endblock title %}
+{% block body %}
+<center>
+<div>
+<h1>Add your profile here...</h1>
+    <div class="form-group mx-20 my-4" style="">
+
+    {% if submitted %}
+        your profile submitted successfully!!!
+    {% else %}
+        <form action="" method=POST enctype="multipart/form-data" >
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Submit" class="btn btn-secondary">
+    {% endif %}
+    </div>
+</div>
+</center>
+{% endblock body %}
