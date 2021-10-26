@@ -1,5 +1,8 @@
 from theapp.models import partner
 from django.shortcuts import render
+from theapp.forms import addprofileform
+from .forms import addprofileform
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def home(request):
@@ -45,3 +48,16 @@ def search(request):
          {'searched':searched, 'partners':partners}) 
          
     else: return render(request,"search.html")
+       
+ def addprofile(request):
+    submitted = False
+    if request.method == "POST":
+        form = addprofileform(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add_profile?submitted=True')
+    else:
+        form = addprofileform
+        if 'submitted' in request.GET:
+            submitted = True
+    return render(request, 'add_profile.html', {'form':form, 'submitted':submitted})
