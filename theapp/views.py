@@ -23,8 +23,8 @@ def partnersearch(request):
 
 
 def searchbyID(request):
-    if request.method=="POST": 
-        searchfor = request.POST['searchfor'] 
+    if request.method=="POST":
+        searchfor = request.POST['searchfor']
         partners = partner.objects.filter(partner_id__contains=searchfor) 
         return render(request,"searchbyID.html",
          {'searchfor':searchfor, 'partners':partners}) 
@@ -49,7 +49,7 @@ def search(request):
          
     else: return render(request,"search.html")
        
- def addprofile(request):
+def addprofile(request):
     submitted = False
     if request.method == "POST":
         form = addprofileform(request.POST, request.FILES)
