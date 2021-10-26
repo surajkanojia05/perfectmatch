@@ -5,6 +5,9 @@ from django.db.models import aggregates
 class partner(models.Model):
     partner_id=models.AutoField(primary_key=True)
     name=models.CharField(max_length=100)
+    father_name=models.CharField(max_length=100)
+    mother_name=models.CharField(max_length=100)
+    address=models.CharField(max_length=100)
     cast=models.CharField(max_length=100)
     religion=models.CharField(max_length=100)
     age=models.IntegerField()
