@@ -7,7 +7,26 @@ class addprofileform(ModelForm):
     class Meta:
         model = partner
         fields = ('name', 'father_name', 'mother_name', 'address', 'cast', 'religion', 'age', 'description', 'tag', 'gender', 'qualifications', 'occupation', 'height', 'image1', 'image2', 'image3')
-
+        
+        labels = {
+            'name': 'Enter your name:',
+            'father_name': "Enter your Father's name:",
+            'mother_name': "Enter your Mother's name:",
+            'address': 'Enter your location and city:',
+            'cast': 'Enter your cast:',
+            'religion': 'Enter your religion:',
+            'age': 'Enter your Age:',
+            'description': 'Explain about yourself:',
+            'tag': 'Enter relevant tags to your profile to make search results better:',
+            'gender': 'Enter Gender:',
+            'qualifications': 'Enter your qualifications:',
+            'occupation': 'Enter your Occupation:',
+            'height': 'Enter your height in feets:',
+            'image1': 'Enter image here:',
+            'image2': 'Enter image here:',
+            'image3': 'Enter image here:',
+        }
+        
         widgets = {
             'name':forms.TextInput(attrs={'class': 'form-control'}),
             'father_name':forms.TextInput(attrs={'class': 'form-control'}),
