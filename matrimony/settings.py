@@ -22,7 +22,7 @@ SECRET_KEY = 'django-insecure-o%*ckskea(@j--+ykz!-gavn_je=1@e4m=cfjyv7x9765si%()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'www.perfect-match.in', 'perfect-match.in']
 
 
 # Application definition
