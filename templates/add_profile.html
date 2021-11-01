@@ -16,7 +16,9 @@
         <form action="" method=POST enctype="multipart/form-data" >
             {% csrf_token %}
             {{ form.as_p }}
-            <h3> If you don't want to add multiple photos, just add one photo in all three fields </h3>
+            <hr>
+            <h4> If you don't want to add multiple photos, just add one photo in all three fields </h4>
+            <hr>
             <input type="submit" value="Submit" class="btn btn-secondary">
     {% endif %}
     </div>
