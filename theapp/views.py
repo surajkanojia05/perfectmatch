@@ -43,7 +43,13 @@ def payment(request):
 def search(request): 
     if request.method=="POST": 
         searched = request.POST['searched'] 
-        partners = partner.objects.filter(tag__contains=searched) 
+        q1 = partner.objects.filter(name__contains=searched)
+        q2 = partner.objects.filter(cast__contains=searched)
+        q3 = partner.objects.filter(religion__contains=searched)
+        q4 = partner.objects.filter(gender__contains=searched)
+        q5 = partner.objects.filter(address__contains=searched)
+        
+        partners = q1.union(q2, q3, q4, q5)
         return render(request,"search.html",
          {'searched':searched, 'partners':partners}) 
          
