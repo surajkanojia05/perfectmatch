@@ -3,12 +3,13 @@
 {% block body %}
 <center>
 <div>
-<h1>Add your profile here...</h1>
+
     <div class="form-group mx-20 my-4" style="">
 
     {% if submitted %}
         your profile submitted successfully!!!
     {% else %}
+        <h1>Add your profile here...</h1>
         <form action="" method=POST enctype="multipart/form-data" >
             {% csrf_token %}
             {{ form.as_p }}
