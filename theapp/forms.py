@@ -6,7 +6,7 @@ from django.forms import ModelForm
 class addprofileform(ModelForm):
     class Meta:
         model = partner
-        fields = ('name', 'father_name', 'mother_name', 'address', 'cast', 'religion', 'age', 'description', 'tag', 'gender', 'qualifications', 'occupation', 'height', 'image1', 'image2', 'image3')
+        fields = ('name', 'father_name', 'mother_name', 'address', 'cast', 'religion', 'age', 'description', 'gender', 'qualifications', 'occupation', 'height', 'image1', 'image2', 'image3')
         
         labels = {
             'name': 'Enter your name:',
