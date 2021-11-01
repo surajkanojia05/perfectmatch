@@ -7,7 +7,9 @@
     <div class="form-group mx-20 my-4" style="">
 
     {% if submitted %}
-        your profile submitted successfully!!!
+        <h2> Congratulations </h2>
+        <h3> Your profile submitted successfully!!!</h3>
+        For further services please <a href="{% url 'contact-us' %}"> contact us </a>
     {% else %}
         <h1>Add your profile here...</h1>
         <form action="" method=POST enctype="multipart/form-data" >
