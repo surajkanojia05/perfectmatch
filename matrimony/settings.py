@@ -34,7 +34,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'theapp'
+    'theapp',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -134,3 +135,37 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 django_heroku.settings(locals())
+
+
+
+#S3 Buckets config
+
+AWS_ACCESS_KEY_ID = 'AKIA4HYUDTPYSQF3SEO3'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'perfect-match.in'
+
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+'''
+[
+    {
+        "AllowedHeaders": [
+            "*"
+        ],
+        "AllowedMethods": [
+            "GET",
+            "PUT",
+            "POST",
+            "HEAD",
+            "DELETE"
+        ],
+        "AllowedOrigins": [
+            "*"
+        ],
+        "ExposeHeaders": [],
+        "MaxAgeSeconds": 3000
+    }
+]
+'''
